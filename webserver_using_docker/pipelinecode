@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+        stage('git repo') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', credentialsId: 'git_creds', url: 'https://github.com/ptvprasad/cloud_credits.git'
+            }
+        }
+        stage('docker_image') {
+            steps {
+                // Building Docker image
+                sh 'docker build -t webserver:v1 -f webserver_using_docker/Dockerfile webserver_using_docker/'
+            }
+        }
+        stage('docker login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker_access', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
+                    sh 'docker login -u $docker_user -p $docker_pass'
+                }
+            }
+        }
+        stage('docker tag & push') {
+            steps {
+                sh 'docker tag webserver:v1 teja694/webserver:v1'
+                sh 'docker push teja694/webserver:v1'
+            }
+        }
+        stage('run container') {
+            steps {
+                sh 'docker pull teja694/webserver:v1'
+                sh 'docker run -d -p 8095:80 --name ngixcon teja694/webserver:v1'
+            }
+        }
+    }
+}
