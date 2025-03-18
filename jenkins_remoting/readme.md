@@ -4,3 +4,6 @@ we create 2 EC2 instances, 1 acts as master where jenkins is installed and 2nd a
 
 now let's install jenkins and dependencies in the master instance using the bash file jenkins.sh.
 
+![image](https://github.com/user-attachments/assets/d33f04b7-b021-4969-92d4-037def7efdd1)
+
+
