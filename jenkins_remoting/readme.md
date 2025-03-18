@@ -18,10 +18,16 @@ agent connected
 ![image](https://github.com/user-attachments/assets/05e5efbf-0277-4ae2-b60c-6422db0b706e)
 
 now lets execute basic build using pipeline in master system
+sample pipeline to clone repo
+![image](https://github.com/user-attachments/assets/bc56fd24-db38-452f-9e61-532f9fadae91)
+
+build success 
+![image](https://github.com/user-attachments/assets/5d42678e-8ac0-40a3-96fa-5c1384f1137b)
+files same as in agent system
+![image](https://github.com/user-attachments/assets/e7a6e512-164b-493c-887f-7b23f8f78e27)
 
 
-build success in agent system
-![image](https://github.com/user-attachments/assets/0f1e988c-ff12-4ac7-a53a-9d5090876221)
+
 
 
 
